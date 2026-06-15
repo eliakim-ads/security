@@ -1,0 +1,14 @@
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Exibe o email do usuário logado -->
+Bem-vindo, <span sec:authentication="name"></span>!
+
+<!-- Visível apenas para ROLE_ADMIN -->
+<div sec:authorize="hasRole('ADMIN')">
+  <p>Painel de Administração</p>
+</div>
+
+<!-- Logout DEVE ser POST — proteção CSRF -->
+<form th:action="@{/logout}" method="post">
+  <button type="submit">Sair</button>
+</form>
